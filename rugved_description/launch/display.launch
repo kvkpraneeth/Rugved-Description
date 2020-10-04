@@ -22,7 +22,7 @@
     name="rviz"
     pkg="rviz"
     type="rviz"
-    args="-d $(find rugved_description)/urdf.rviz" />
+    args="-d $(find rugved_description)/config/config.rviz" />
 
   <include
     file="$(find gazebo_ros)/launch/empty_world.launch" />
