@@ -93,8 +93,8 @@
     <axis
       xyz="0 0 -1" />
     <limit
-      lower="0"
-      upper="6.29"
+      lower="-1000000"
+      upper="1000000"
       effort="1000"
       velocity="1" />
   </joint>
@@ -164,8 +164,8 @@
     <axis
       xyz="0 0 1" />
     <limit
-      lower="0"
-      upper="6.29"
+      lower="-1000000"
+      upper="1000000"
       effort="1000"
       velocity="1" />
   </joint>
@@ -236,8 +236,8 @@
     <axis
       xyz="0 1 0" />
     <limit
-      lower="0"
-      upper="6.29"
+      lower="-1000000"
+      upper="1000000"
       effort="400"
       velocity="1" />
   </joint>
@@ -304,8 +304,8 @@
     <axis
       xyz="0 0 1" />
     <limit
-      lower="0"
-      upper="6.29"
+      lower="-1000000"
+      upper="1000000"
       effort="500"
       velocity="1" />
   </joint>
@@ -367,6 +367,67 @@
       <inertia ixx="1e-6" ixy="0" ixz="0" iyy="1e-6" iyz="0" izz="1e-6" />
     </inertial>
   </link>
+
+  <joint name="imu_joint" type="fixed">
+    <axis xyz="0 1 0" />
+    <origin xyz="0.12525 -0.00023509 0.24914" rpy="0 0 0"/>
+    <parent link="base_link"/>
+    <child link="imu_link"/>
+  </joint>
+
+  <link name = "imu_link">
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.03 0.05 0.01"/>
+      </geometry>
+    </collision>
+
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.03 0.05 0.01"/>
+      </geometry>
+      <material name="blue"/>
+    </visual>
+
+    <inertial>
+      <mass value="1e-5" />
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="1e-6" ixy="0" ixz="0" iyy="1e-6" iyz="0" izz="1e-6" />
+    </inertial>
+  </link>    
+
+  <joint name="gps_joint" type="fixed">
+    <axis xyz="0 1 0" />
+    <origin xyz="0.07525 -0.00023509 0.24914" rpy="0 0 0"/>
+    <parent link="base_link"/>
+    <child link="gps_link"/>
+  </joint>
+
+  <link name = "gps_link">
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.03 0.05 0.01"/>
+      </geometry>
+    </collision>
+
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.03 0.05 0.01"/>
+      </geometry>
+      <material name="blue"/>
+    </visual>
+
+    <inertial>
+      <mass value="1e-5" />
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="1e-6" ixy="0" ixz="0" iyy="1e-6" iyz="0" izz="1e-6" />
+    </inertial>
+  </link>   
+
 <!--   <gazebo>
     <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
       <robotNamespace>/</robotNamespace>
